@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import './Input.css';
 class Input extends Component {
 constructor (props) {
   super(props);
@@ -26,7 +26,7 @@ deleteToDo(todo) {
   render() {
     return (
       <div>
-        <input  type="text" value={this.state.value} onChange={this.handleChange}/>
+        <input className="text" type="text" value={this.state.value} onChange={this.handleChange}/>
         <button className="add" onClick={() => this.addTodo(this.state.value)}>Add</button>
         {/* <button className="delete"  onClick={() => this.deleteToDo(this.state.value)}>Remove</button> */}
 
