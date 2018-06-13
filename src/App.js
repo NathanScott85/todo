@@ -32,13 +32,14 @@ class App extends Component {
    }
 
   render() {
-    const todos = this.state.todos.map(t => (<li key={t.id}>{t.todo}<button  onClick={() => this.deleteToDo(t.id)}>X</button></li>));
+    const todos = this.state.todos.map(t => (<li key={t.id}>{t.todo}
+    <button className="close"  onClick={() => this.deleteToDo(t.id)}>X</button></li>));
 
     return (
       <div className="App">
         <ToDoHeader />
        <Input text={this.state.todos.text} addTodo={this.addTodo}/>
-        <ul>
+        <ul className="todo">
         {todos}
         </ul>
       </div>
