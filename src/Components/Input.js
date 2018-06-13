@@ -20,7 +20,7 @@ addTodo (todo) {
 deleteToDo(todo) {
  
   this.props.deleteToDo(todo);
-  this.setState=({value: ''});
+  this.setState({value: ''});
 
 }
   render() {
@@ -28,8 +28,8 @@ deleteToDo(todo) {
       <div>
         <input  type="text" value={this.state.value} onChange={this.handleChange}/>
         <button className="add" onClick={() => this.addTodo(this.state.value)}>Add</button>
-        <button className="delete"  onClick={() => this.deleteToDo(this.state.value)}>Remove</button>
-       
+        {/* <button className="delete"  onClick={() => this.deleteToDo(this.state.value)}>Remove</button> */}
+
       </div>
     );
   }

@@ -8,36 +8,39 @@ class App extends Component {
     super();
     this.state = {
       todos: [],
-      text: ''
+      text: '',
+      nextId: 0,
     }
 
     this.addTodo = this.addTodo.bind(this);
     this.deleteToDo = this.deleteToDo.bind(this);
   }
 
-
   addTodo (todo) {
-    console.log(todo);
     
+    const nextId = this.state.nextId+1;
+    let todos = this.state.todos;
+    todos.push({todo, id:nextId});
+    this.setState({todos, nextId});
+    console.log(this.state.todos);
    }
    
-   deleteToDo(todo) {
-     console.log(todo);
-    //  let todos = this.state.slice();
-    //  this.setState({todos: todos});
-    // const todos = [...this.state.todos];
-    // todos.slice(todo, 1);
-    // this.setState({todos: todos});
-    
+   deleteToDo(id) {
+     console.log(id);
+    const todos = this.state.todos.filter(t => id !== t.id);
+    this.setState({todos});
    }
 
   render() {
-    // let todos = null;
+    const todos = this.state.todos.map(t => (<li key={t.id}>{t.todo}<button  onClick={() => this.deleteToDo(t.id)}>X</button></li>));
+
     return (
       <div className="App">
         <ToDoHeader />
-       <Input text={this.state.todos.text} addTodo={this.addTodo} deleteToDo={this.deleteToDo} />
-
+       <Input text={this.state.todos.text} addTodo={this.addTodo}/>
+        <ul>
+        {todos}
+        </ul>
       </div>
     );
   }
