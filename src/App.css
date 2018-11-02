@@ -4,7 +4,8 @@
   width: 50%;
   height: 500px;
   padding: 10px;
-
+  border-radius: 5px;
+  border: 3px solid #015367;
   background-color: #c1bcb6;
   /* margin: 30px 0px 0px 320px; */
 }
