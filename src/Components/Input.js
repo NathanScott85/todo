@@ -1,35 +1,34 @@
 import React, { Component } from "react";
-import './Input.css';
+import "./Input.css";
 class Input extends Component {
-constructor (props) {
-  super(props);
+  state = { value: "" };
+  handleChange = this.handleChange.bind(this);
+  addTodo = this.addTodo.bind(this);
+  deleteToDo = this.deleteToDo.bind(this);
 
-  this.state = {value:''};
-  this.handleChange = this.handleChange.bind(this);
-  this.addTodo = this.addTodo.bind(this);
-  this.deleteToDo = this.deleteToDo.bind(this);
-}
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+  addTodo(todo) {
+    this.props.addTodo(todo);
+  }
 
-handleChange (e) {
-  this.setState({value: e.target.value});
-}
-addTodo (todo) {
- this.props.addTodo(todo);
-}
-
-deleteToDo(todo) {
- 
-  this.props.deleteToDo(todo);
-  this.setState({value: ''});
-
-}
+  deleteToDo(todo) {
+    this.props.deleteToDo(todo);
+    this.setState({ value: "" });
+  }
   render() {
     return (
       <div>
-        <input className="text" type="text" value={this.state.value} onChange={this.handleChange}/>
-        <button className="add" onClick={() => this.addTodo(this.state.value)}>Add</button>
-        {/* <button className="delete"  onClick={() => this.deleteToDo(this.state.value)}>Remove</button> */}
-
+        <input
+          className="text"
+          type="text"
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+        <button className="add" onClick={() => this.addTodo(this.state.value)}>
+          Add
+        </button>
       </div>
     );
   }
